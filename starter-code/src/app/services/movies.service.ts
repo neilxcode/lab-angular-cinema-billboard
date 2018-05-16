@@ -1,4 +1,9 @@
-[
+import { Injectable } from '@angular/core';
+import * as _ from 'underscore';
+
+@Injectable()
+export class MovieService {
+    movies: Array<Object> = [
   {
     id: 1,
     title: "The Shawshank Redemption",
@@ -16,7 +21,13 @@
       "William Sadler",
       "Clancy Brown",
       "Gil Bellows"
-    ]
+    ],
+    hours: [
+        "1:00 PM",
+        "2:00 PM",
+        "3:00 PM"
+    ],
+    room: 1,
   }, {
     id: 2,
     title: "The Godfather",
@@ -34,7 +45,13 @@
       "Richard S. Castellano",
       "Robert Duvall",
       "Sterling Hayden"
-    ]
+    ],
+    hours: [
+        "4:00 PM",
+        "5:00 PM",
+        "6:00 PM"
+    ],
+    room: 2,
   }, {
     id: 3,
     title: "The Godfather Part II",
@@ -52,7 +69,13 @@
       "Robert De Niro",
       "John Cazale",
       "Talia Shire"
-    ]
+    ],
+    hours: [
+        "7:00 PM",
+        "8:00 PM",
+        "9:00 PM"
+    ],
+    room: 3,
   }, {
     id: 4,
     title: "The Dark Knight",
@@ -70,7 +93,13 @@
       "Michael Caine",
       "Maggie Gyllenhaal",
       "Gary Oldman"
-    ]
+    ],
+    hours: [
+        "10:00 PM",
+        "11:00 PM",
+        "12:00 PM"
+    ],
+    room: 4,
   }, {
     id: 5,
     title: "Schindler's List",
@@ -88,7 +117,22 @@
       "Caroline Goodall",
       "Jonathan Sagall",
       "Embeth Davidtz"
-    ]
+    ],
+    hours: [
+        "1:00 AM",
+        "2:00 AM",
+        "3:00 AM"
+    ],
+    room: 5,
   }
 ]
+    constructor() { }
 
+    getMovies(): Array<Object> {
+        return this.movies;
+    }
+
+    getMovie(id: Number): Object{
+        return _.findWhere(this.movies, {id: id});
+    }
+}
